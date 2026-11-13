@@ -37,6 +37,7 @@ import com.taskku.ui.TaskKuChip
 @Composable
 fun HomeScreen(
     tab: String,
+    twoColumns: Boolean = false,
     onTabChange: (String) -> Unit,
     onOpenTask: (Int) -> Unit,
     onAdd: () -> Unit,
@@ -84,12 +85,33 @@ fun HomeScreen(
                 }
                 if (group.isNotEmpty()) {
                     SectionHeader(section, group.size)
-                    group.forEach { task ->
-                        TaskCard(
-                            task = task,
-                            onClick = { onOpenTask(task.id) },
-                            onToggle = { TaskRepository.toggleDone(task.id) },
-                        )
+                    if (twoColumns) {
+                        // Tablet (>= 720): daftar 2 kolom
+                        group.chunked(2).forEach { pair ->
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                modifier = Modifier.fillMaxWidth(),
+                            ) {
+                                pair.forEach { task ->
+                                    Box(Modifier.weight(1f)) {
+                                        TaskCard(
+                                            task = task,
+                                            onClick = { onOpenTask(task.id) },
+                                            onToggle = { TaskRepository.toggleDone(task.id) },
+                                        )
+                                    }
+                                }
+                                if (pair.size == 1) Box(Modifier.weight(1f))
+                            }
+                        }
+                    } else {
+                        group.forEach { task ->
+                            TaskCard(
+                                task = task,
+                                onClick = { onOpenTask(task.id) },
+                                onToggle = { TaskRepository.toggleDone(task.id) },
+                            )
+                        }
                     }
                 }
             }
