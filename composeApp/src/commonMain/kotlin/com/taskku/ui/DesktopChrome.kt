@@ -21,6 +21,7 @@ import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.rounded.BarChart
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Flag
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Person
@@ -46,6 +47,7 @@ import com.taskku.theme.LocalTaskKuText
 
 private val sideNavItems = listOf(
     "Beranda" to Icons.Rounded.Home,
+    "Tugas" to Icons.Rounded.Flag,
     "Kalender" to Icons.Rounded.CalendarMonth,
     "Statistik" to Icons.Rounded.BarChart,
 )

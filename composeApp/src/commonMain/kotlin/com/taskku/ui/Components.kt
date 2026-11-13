@@ -359,6 +359,7 @@ fun ProgressCard(pct: Int, done: Int, total: Int, note: String, modifier: Modifi
 
 private val dockItems = listOf(
     "Beranda" to Icons.Rounded.Home,
+    "Tugas" to Icons.Rounded.Flag,
     "Kalender" to Icons.Rounded.CalendarMonth,
     "Statistik" to Icons.Rounded.BarChart,
     "Profil" to Icons.Rounded.Person,
@@ -465,6 +466,7 @@ fun FieldBox(
     placeholder: String,
     modifier: Modifier = Modifier,
     height: Dp = 56.dp,
+    leading: (@Composable () -> Unit)? = null,
     trailing: (@Composable () -> Unit)? = null,
 ) {
     val colors = LocalTaskKuColors.current
@@ -477,6 +479,10 @@ fun FieldBox(
             .background(colors.surface2)
             .padding(horizontal = 18.dp),
     ) {
+        if (leading != null) {
+            leading()
+            Spacer(Modifier.width(12.dp))
+        }
         Box(Modifier.weight(1f)) {
             if (value.isEmpty()) {
                 Text(placeholder, style = txt.body, color = colors.textMuted)

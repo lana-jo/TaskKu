@@ -47,6 +47,7 @@ import com.taskku.ui.screens.ProfileScreen
 import com.taskku.ui.screens.StatisticsScreen
 import com.taskku.ui.screens.HomeScreen
 import com.taskku.ui.screens.TaskDetailScreen
+import com.taskku.ui.screens.TaskListScreen
 
 sealed interface Screen {
     data object Home : Screen
@@ -143,6 +144,12 @@ private fun MobileApp(layout: ResponsiveLayout, darkOverride: Boolean?, onDarkOv
             onTabChange = { tab = it },
             onAdd = { openSpeedDial() },
         )
+        "Tugas" -> TaskListScreen(
+            tab = tab,
+            onTabChange = { tab = it },
+            onAdd = { openSpeedDial() },
+            onOpenTask = { screen = Screen.Detail(it) },
+        )
         "Profil" -> ProfileScreen(
             tab = tab,
             onTabChange = { tab = it },
@@ -213,6 +220,7 @@ private fun DesktopApp() {
         ) {
             DesktopHeader(
                 title = when (tab) {
+                    "Tugas" -> "Semua Tugas"
                     "Kalender" -> "Kalender"
                     "Statistik" -> "Statistik"
                     "Profil" -> "Profil"
@@ -224,9 +232,15 @@ private fun DesktopApp() {
                 onAdd = { openSpeedDial() },
             )
             Spacer(Modifier.height(22.dp))
-            Box(Modifier.weight(1f)) {
-                when (tab) {
-                    "Kalender" -> CalendarScreen(
+                Box(Modifier.weight(1f)) {
+                    when (tab) {
+                        "Tugas" -> TaskListScreen(
+                            tab = tab,
+                            onTabChange = { tab = it },
+                            onAdd = { openSpeedDial() },
+                            onOpenTask = { screen = Screen.Detail(it) },
+                        )
+                        "Kalender" -> CalendarScreen(
                         tab = tab,
                         onTabChange = { tab = it },
                         onAdd = { openSpeedDial() },
