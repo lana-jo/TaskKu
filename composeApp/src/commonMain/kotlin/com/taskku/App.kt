@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.taskku.data.AppSettings
 import com.taskku.data.Task
 import com.taskku.data.TaskRepository
+import com.taskku.data.UserSession
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.LocalTaskKuText
 import com.taskku.theme.TaskKuTheme
@@ -46,6 +47,7 @@ import com.taskku.ui.screens.CalendarScreen
 import com.taskku.ui.screens.ProfileScreen
 import com.taskku.ui.screens.StatisticsScreen
 import com.taskku.ui.screens.HomeScreen
+import com.taskku.ui.screens.OnboardingScreen
 import com.taskku.ui.screens.TaskDetailScreen
 import com.taskku.ui.screens.TaskListScreen
 
@@ -75,16 +77,27 @@ fun responsiveLayoutOf(widthPx: Int, density: Float): ResponsiveLayout {
 fun App() {
     // Persisten (tabel settings): null = ikut tema sistem.
     var darkOverride by remember { mutableStateOf(AppSettings.darkOverride) }
+    // Sesi: null = belum onboarding. Nama disimpan di tabel settings.
+    var userName by remember { mutableStateOf(UserSession.userName) }
     TaskKuTheme(darkTheme = darkOverride ?: isSystemInDarkTheme()) {
-        AppContent(darkOverride) {
-            darkOverride = it
-            AppSettings.setDarkOverride(it)
+        if (userName == null) {
+            OnboardingScreen { name ->
+                userName = name
+            }
+        } else {
+            AppContent(darkOverride, onLogout = {
+                UserSession.signOut()
+                userName = null
+            }) {
+                darkOverride = it
+                AppSettings.setDarkOverride(it)
+            }
         }
     }
 }
 
 @Composable
-private fun AppContent(darkOverride: Boolean?, onDarkOverrideChange: (Boolean?) -> Unit) {
+private fun AppContent(darkOverride: Boolean?, onLogout: () -> Unit, onDarkOverrideChange: (Boolean?) -> Unit) {
     val density = androidx.compose.ui.platform.LocalDensity.current
     var widthPx by remember { mutableStateOf(0) }
     Box(
@@ -94,13 +107,19 @@ private fun AppContent(darkOverride: Boolean?, onDarkOverrideChange: (Boolean?) 
     ) {
         if (widthPx > 0) {
             val layout = responsiveLayoutOf(widthPx, density.density)
-            if (layout.isDesktop) DesktopApp() else MobileApp(layout, darkOverride, onDarkOverrideChange)
+            if (layout.isDesktop) DesktopApp(darkOverride, onLogout, onDarkOverrideChange)
+            else MobileApp(layout, darkOverride, onLogout, onDarkOverrideChange)
         }
     }
 }
 
 @Composable
-private fun MobileApp(layout: ResponsiveLayout, darkOverride: Boolean?, onDarkOverrideChange: (Boolean?) -> Unit) {
+private fun MobileApp(
+    layout: ResponsiveLayout,
+    darkOverride: Boolean?,
+    onLogout: () -> Unit,
+    onDarkOverrideChange: (Boolean?) -> Unit,
+) {
     var screen by remember { mutableStateOf<Screen>(Screen.Home) }
     var showSheet by remember { mutableStateOf(false) }
     var editing by remember { mutableStateOf<Task?>(null) }
@@ -155,6 +174,7 @@ private fun MobileApp(layout: ResponsiveLayout, darkOverride: Boolean?, onDarkOv
             onTabChange = { tab = it },
             darkOverride = darkOverride,
             onDarkOverrideChange = onDarkOverrideChange,
+            onLogout = onLogout,
         )
     }
 
@@ -192,7 +212,7 @@ private fun MobileApp(layout: ResponsiveLayout, darkOverride: Boolean?, onDarkOv
 }
 
 @Composable
-private fun DesktopApp() {
+private fun DesktopApp(darkOverride: Boolean?, onLogout: () -> Unit, onDarkOverrideChange: (Boolean?) -> Unit) {
     var screen by remember { mutableStateOf<Screen>(Screen.Home) }
     var showSheet by remember { mutableStateOf(false) }
     var editing by remember { mutableStateOf<Task?>(null) }
@@ -228,7 +248,7 @@ private fun DesktopApp() {
                 },
                 subtitle = "Jumat, 13 November 2026 — 5 tugas aktif (demo)",
                 onProfile = { tab = "Profil" },
-                onLogout = { /* menyusul bersama alur auth */ },
+                onLogout = onLogout,
                 onAdd = { openSpeedDial() },
             )
             Spacer(Modifier.height(22.dp))
@@ -241,34 +261,35 @@ private fun DesktopApp() {
                             onOpenTask = { screen = Screen.Detail(it) },
                         )
                         "Kalender" -> CalendarScreen(
-                        tab = tab,
-                        onTabChange = { tab = it },
-                        onAdd = { openSpeedDial() },
-                        onOpenTask = { screen = Screen.Detail(it) },
-                    )
-                    "Statistik" -> StatisticsScreen(
-                        tab = tab,
-                        onTabChange = { tab = it },
-                        onAdd = { openSpeedDial() },
-                    )
-                    "Profil" -> ProfileScreen(
-                        tab = tab,
-                        onTabChange = { tab = it },
-                        darkOverride = null,
-                        onDarkOverrideChange = { },
-                    )
-                    else -> when (val current = screen) {
-                        is Screen.Detail -> TaskDetailScreen(
-                            taskId = current.taskId,
-                            onBack = { screen = Screen.Home },
-                            onEdit = { task ->
-                                editing = task
-                                showSheet = true
-                            },
+                            tab = tab,
+                            onTabChange = { tab = it },
+                            onAdd = { openSpeedDial() },
+                            onOpenTask = { screen = Screen.Detail(it) },
                         )
-                        else -> DesktopKanban { screen = Screen.Detail(it) }
+                        "Statistik" -> StatisticsScreen(
+                            tab = tab,
+                            onTabChange = { tab = it },
+                            onAdd = { openSpeedDial() },
+                        )
+                        "Profil" -> ProfileScreen(
+                            tab = tab,
+                            onTabChange = { tab = it },
+                            darkOverride = darkOverride,
+                            onDarkOverrideChange = onDarkOverrideChange,
+                            onLogout = onLogout,
+                        )
+                        else -> when (val current = screen) {
+                            is Screen.Detail -> TaskDetailScreen(
+                                taskId = current.taskId,
+                                onBack = { screen = Screen.Home },
+                                onEdit = { task ->
+                                    editing = task
+                                    showSheet = true
+                                },
+                            )
+                            else -> DesktopKanban { screen = Screen.Detail(it) }
+                        }
                     }
-                }
             }
         }
     }

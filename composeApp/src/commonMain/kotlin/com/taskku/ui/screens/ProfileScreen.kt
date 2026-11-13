@@ -43,11 +43,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.taskku.data.UserSession
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.TaskKuShapes
 import com.taskku.theme.LocalTaskKuText
 import com.taskku.ui.DockBar
 import com.taskku.ui.OutlineButton
+import com.taskku.ui.PrimaryButton
 
 @Composable
 fun ProfileScreen(
@@ -55,10 +57,14 @@ fun ProfileScreen(
     onTabChange: (String) -> Unit,
     darkOverride: Boolean?,
     onDarkOverrideChange: (Boolean?) -> Unit,
+    onLogout: () -> Unit = {},
 ) {
     val colors = LocalTaskKuColors.current
     val txt = LocalTaskKuText.current
     var notifOn by remember { mutableStateOf(true) }
+    var confirmLogout by remember { mutableStateOf(false) }
+    val userName = com.taskku.data.UserSession.userName ?: "Pengguna"
+    val initials = userName.split(" ").mapNotNull { it.firstOrNull() }.take(2).joinToString("")
 
     Box(Modifier.fillMaxSize().background(colors.bg)) {
         Column(
@@ -84,10 +90,10 @@ fun ProfileScreen(
                             .clip(CircleShape)
                             .background(Color.White.copy(alpha = 0.18f)),
                     ) {
-                        Text("RP", style = txt.section.copy(fontSize = 20.sp), color = Color.White)
+                        Text(initials, style = txt.section.copy(fontSize = 20.sp), color = Color.White)
                     }
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("Rian Pratama", style = txt.section.copy(fontSize = 17.sp), color = Color.White)
+                        Text(userName, style = txt.section.copy(fontSize = 17.sp), color = Color.White)
                         Text("rian.pratama@mail.com", style = txt.small.copy(fontSize = 12.sp), color = Color.White.copy(alpha = 0.7f))
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -149,11 +155,60 @@ fun ProfileScreen(
             OutlineButton(
                 label = "Keluar",
                 icon = Icons.Rounded.Logout,
-                onClick = { /* TODO: alur logout setelah layar onboarding/auth dibuat */ },
+                onClick = { confirmLogout = true },
                 modifier = Modifier.fillMaxWidth(),
                 strokeColor = colors.danger,
                 textColor = colors.danger,
             )
+        }
+        if (confirmLogout) {
+            // Scrim + dialog konfirmasi keluar
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.4f))
+                    .clickable { confirmLogout = false },
+            )
+            Surface(
+                shape = RoundedCornerShape(20.dp),
+                color = colors.surface,
+                shadowElevation = 16.dp,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(horizontal = 40.dp)
+                    .fillMaxWidth(),
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.padding(24.dp),
+                ) {
+                    Text("Keluar dari TaskKu?", style = txt.section, color = colors.text)
+                    Text(
+                        "Tugasmu tetap tersimpan di perangkat ini.",
+                        style = txt.small,
+                        color = colors.textMuted,
+                    )
+                    Spacer(Modifier.height(6.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
+                        OutlineButton(
+                            label = "Batal",
+                            onClick = { confirmLogout = false },
+                            modifier = Modifier.weight(1f),
+                            height = 46.dp,
+                        )
+                        com.taskku.ui.PrimaryButton(
+                            label = "Keluar",
+                            onClick = {
+                                confirmLogout = false
+                                onLogout()
+                            },
+                            modifier = Modifier.weight(1f),
+                            height = 46.dp,
+                        )
+                    }
+                }
+            }
         }
         DockBar(
             active = tab,
