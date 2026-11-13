@@ -53,11 +53,19 @@ fun HomeScreen(
                 .padding(start = 24.dp, top = 8.dp, end = 24.dp, bottom = 118.dp),
         ) {
             HeroCard()
+            val todayTasks = remember { TaskRepository.tasks.filter { it.section == "Hari Ini" } }
+            val doneToday = todayTasks.count { it.isDone }
             ProgressCard(
-                pct = 37,
-                done = 3,
-                total = 8,
-                note = "3 tugas lagi sebelum pukul 17:00",
+                pct = if (todayTasks.isEmpty()) 0 else (doneToday * 100 / todayTasks.size),
+                done = doneToday,
+                total = todayTasks.size,
+                note = if (todayTasks.isEmpty()) {
+                    "Belum ada tugas untuk hari ini"
+                } else {
+                    val sisa = todayTasks.size - doneToday
+                    if (sisa == 0) "Semua tugas hari ini selesai!"
+                    else "$sisa tugas lagi untuk diselesaikan"
+                },
             )
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),

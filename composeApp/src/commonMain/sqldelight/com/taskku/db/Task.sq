@@ -19,7 +19,8 @@ CREATE TABLE tasks (
     section TEXT NOT NULL,
     isDone INTEGER NOT NULL DEFAULT 0,
     description TEXT,
-    reminder INTEGER NOT NULL DEFAULT 0
+    reminder INTEGER NOT NULL DEFAULT 0,
+    date TEXT NOT NULL DEFAULT '2026-11-13'
 );
 
 CREATE TABLE subtasks (
@@ -42,8 +43,8 @@ selectCategories:
 SELECT * FROM categories ORDER BY rowid;
 
 insertTask:
-INSERT OR REPLACE INTO tasks(id, title, categoryLabel, priorityLabel, time, section, isDone, description, reminder)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO tasks(id, title, categoryLabel, priorityLabel, time, section, isDone, description, reminder, date)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 deleteTask:
 DELETE FROM tasks WHERE id = ?;

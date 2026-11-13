@@ -25,6 +25,25 @@ sealed interface Screen {
     data class Detail(val taskId: Int) : Screen
 }
 
+/** Aturan breakpoint TaskKu (sesuai halaman Responsive di desain FigCraft). */
+data class ResponsiveLayout(
+    /** >= 1024px: sidebar 3 item, kanban; Profil & Keluar di dropdown header. */
+    val isDesktop: Boolean,
+    /** >= 720px: daftar tugas 2 kolom (tablet), di bawah itu 1 kolom. */
+    val twoColumns: Boolean,
+)
+
+@Composable
+fun calculateResponsiveLayout(widthPx: Int): ResponsiveLayout {
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    val widthDp = with(density) { widthPx.toDp() }
+    val w = widthDp.value.toDouble()
+    return ResponsiveLayout(
+        isDesktop = w >= 1024,
+        twoColumns = w >= 720,
+    )
+}
+
 @Composable
 fun App() {
     // Persisten (tabel settings): null = ikut tema sistem.

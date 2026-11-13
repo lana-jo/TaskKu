@@ -23,6 +23,10 @@ import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,6 +36,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.taskku.data.TaskRepository
+import com.taskku.data.daysInMonth
+import com.taskku.data.daysInMonthView
+import com.taskku.data.minusMonths
+import com.taskku.data.monthShortId
+import com.taskku.data.plusMonths
+import com.taskku.data.today
+import com.taskku.data.weekdayShortId
+import com.taskku.data.weekdayIndex
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.LocalDate
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.LocalTaskKuText
 import com.taskku.ui.DockBar
@@ -39,11 +53,7 @@ import com.taskku.ui.FabButton
 import com.taskku.ui.SectionHeader
 import com.taskku.ui.TaskCard
 
-private val weekdays = listOf("MIN", "SEN", "SEL", "RAB", "KAM", "JUM", "SAB")
-private const val daysInMonth = 30
-private const val today = 13
-private val daysWithTasks = setOf(5, 8, 10, 12, 13, 16, 19, 23, 26)
-private val selectedDay = 13
+private val weekdays = DayOfWeek.entries.map { weekdayShortId(it) } // SEN..MIN
 
 @Composable
 fun CalendarScreen(
@@ -53,8 +63,11 @@ fun CalendarScreen(
     onOpenTask: (Int) -> Unit,
 ) {
     val colors = LocalTaskKuColors.current
-
     val txt = LocalTaskKuText.current
+    val todayDate = remember { today() }
+    var viewMonth by remember { mutableStateOf(todayDate.dateOrMonthStart()) }
+    var selectedDay by remember { mutableStateOf(todayDate) }
+
     Box(Modifier.fillMaxSize().background(colors.bg)) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -64,14 +77,17 @@ fun CalendarScreen(
                 .padding(start = 24.dp, top = 8.dp, end = 24.dp, bottom = 112.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("November 2026", style = txtJudul(), color = colors.text, modifier = Modifier.weight(1f))
+                Text(
+                    "${monthShortId(viewMonth.month)} ${viewMonth.year}",
+                    style = txtJudul(), color = colors.text, modifier = Modifier.weight(1f),
+                )
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .size(36.dp)
                         .clip(CircleShape)
                         .background(colors.surface)
-                        .clickable { /* TODO: navigasi bulan nyata butuh sumber tanggal */ },
+                        .clickable { viewMonth = viewMonth.minusMonths(1) },
                 ) {
                     Icon(Icons.Rounded.ChevronLeft, contentDescription = "Bulan sebelumnya", tint = colors.text, modifier = Modifier.size(16.dp))
                 }
@@ -82,51 +98,64 @@ fun CalendarScreen(
                         .size(36.dp)
                         .clip(CircleShape)
                         .background(colors.surface)
-                        .clickable { /* TODO: navigasi bulan nyata butuh sumber tanggal */ },
+                        .clickable { viewMonth = viewMonth.plusMonths(1) },
                 ) {
                     Icon(Icons.Rounded.ChevronRight, contentDescription = "Bulan berikutnya", tint = colors.text, modifier = Modifier.size(16.dp))
                 }
             }
             Row(modifier = Modifier.fillMaxWidth()) {
                 weekdays.forEach { d ->
-                    Box(Modifier.width(45.dp), contentAlignment = Alignment.Center) {
+                    Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
                         Text(d, style = txt.micro.copy(fontSize = 9.5.sp), color = colors.textMuted)
                     }
                 }
             }
-            // Grid: 1 Nov 2026 jatuh di hari Minggu (kolom 0); data demo sesuai desain
-            val rows = (0 until 5).map { row ->
-                (1..7).map { col -> row * 7 + col }
+            // Grid mulai Senin (index 0); sel kosong di awal bulan sesuai weekday-nya.
+            val cellCount = viewMonth.daysInMonthView()
+            val rows = (0 until (cellCount + 6) / 7).map { row ->
+                (0..6).map { col -> row * 7 + col }
             }
             rows.forEach { week ->
                 Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.fillMaxWidth()) {
-                    week.forEach { day ->
-                        val valid = day <= daysInMonth
-                        val isToday = day == today
+                    week.forEach { cell ->
+                        val dayNum = cell - viewMonth.weekdayIndexStart() + 1
+                        val valid = dayNum in 1..viewMonth.month.daysInMonth(viewMonth.year)
+                        val date = if (valid) LocalDate(viewMonth.year, viewMonth.month, dayNum) else null
+                        val isToday = date == todayDate
                         Box(
                             contentAlignment = Alignment.Center,
                             modifier = Modifier.weight(1f).height(46.dp),
                         ) {
-                            if (valid) {
+                            if (date != null) {
+                                val hasTask = TaskRepository.tasks.any { it.date == date }
                                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(3.dp)) {
                                     Box(
                                         contentAlignment = Alignment.Center,
                                         modifier = Modifier
                                             .size(34.dp)
                                             .clip(CircleShape)
-                                            .background(if (day == selectedDay) colors.primary else Color.Transparent),
+                                            .background(if (date == selectedDay) colors.primary else Color.Transparent)
+                                            .clickable { selectedDay = date },
                                     ) {
                                         Text(
-                                            "$day",
+                                            "$dayNum",
                                             style = txt.small.copy(
                                                 fontSize = 13.sp,
-                                                fontWeight = if (isToday || day == selectedDay) FontWeight.SemiBold else FontWeight.Normal,
+                                                fontWeight = if (isToday || date == selectedDay) FontWeight.SemiBold else FontWeight.Normal,
                                             ),
-                                            color = if (day == selectedDay) colors.primaryFg else colors.text,
+                                            color = when {
+                                                date == selectedDay -> colors.primaryFg
+                                                isToday -> colors.primary
+                                                else -> colors.text
+                                            },
                                         )
                                     }
                                     Box(
-                                        modifier = Modifier.height(4.dp).width(if (day in daysWithTasks) 4.dp else 0.dp).clip(CircleShape).background(colors.primary),
+                                        modifier = Modifier
+                                            .height(4.dp)
+                                            .width(if (hasTask) 4.dp else 0.dp)
+                                            .clip(CircleShape)
+                                            .background(colors.primary),
                                     )
                                 }
                             }
@@ -134,12 +163,18 @@ fun CalendarScreen(
                     }
                 }
             }
-            SectionHeader("Jumat, 13 November", 4, action = "Semua")
-            val todayTasks = TaskRepository.tasks.filter { it.section == "Hari Ini" }
-            if (todayTasks.isEmpty()) {
+            val dayTasks = TaskRepository.tasks
+                .filter { it.date == selectedDay }
+                .sortedWith(compareBy({ it.section }, { it.time }))
+            SectionHeader(
+                "${weekdayShortId(selectedDay.dayOfWeek)}, ${selectedDay.dayOfMonth} ${monthShortId(selectedDay.month)}",
+                dayTasks.size,
+                action = "Semua",
+            )
+            if (dayTasks.isEmpty()) {
                 Text("Tidak ada tugas pada tanggal ini.", style = txt.small, color = colors.textMuted, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
             } else {
-                todayTasks.forEach { task ->
+                dayTasks.forEach { task ->
                     TaskCard(
                         task = task,
                         onClick = { onOpenTask(task.id) },
@@ -163,6 +198,10 @@ fun CalendarScreen(
         )
     }
 }
+
+private fun LocalDate.dateOrMonthStart(): LocalDate = LocalDate(year, month, 1)
+
+private fun LocalDate.weekdayIndexStart(): Int = LocalDate(year, month, 1).weekdayIndex()
 
 @Composable
 private fun txtJudul() = LocalTaskKuText.current.section.copy(fontSize = 19.sp)
