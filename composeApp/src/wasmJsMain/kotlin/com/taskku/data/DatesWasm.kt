@@ -1,8 +1,8 @@
 package com.taskku.data
 
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.todayIn
 
-actual fun today(): LocalDate = Clock.System.todayIn(TimeZone.currentSystemDefault())
+/** Tanggal hari ini (waktu lokal browser) sebagai ISO yyyy-MM-dd. */
+private fun todayIso(): String = js("new Date().toLocaleDateString('sv-SE')")
+
+actual fun today(): LocalDate = LocalDate.parse(todayIso())
