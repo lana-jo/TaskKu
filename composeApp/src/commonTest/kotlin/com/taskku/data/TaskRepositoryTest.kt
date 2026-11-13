@@ -6,6 +6,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlinx.datetime.LocalDate
 
 /**
  * Test repository in-memory (platform tanpa driver — sama seperti jalur wasmJs).
@@ -116,5 +117,58 @@ class TaskRepositoryTest {
         val task = TaskRepository.tasks.last()
         TaskRepository.update(task.copy(title = "Judul baru"))
         assertEquals("Judul baru", assertNotNull(TaskRepository.byId(task.id)).title)
+    }
+}
+
+class TaskSearchTest {
+
+    private fun task(
+        title: String,
+        category: Category = Categories.Pekerjaan,
+        priority: Priority = Priorities.Sedang,
+        time: String = "08:00",
+        date: LocalDate = LocalDate(2026, 11, 13),
+    ) = Task(
+        id = 0, title = title, category = category, priority = priority,
+        time = time, section = "Hari Ini", date = date,
+    )
+
+    @Test
+    fun pencarian_caseInsensitive() {
+        val hasil = listOf(task("Rapat sprint"), task("Belanja")).search("rapat", null, TaskSort.Tanggal)
+        assertEquals(1, hasil.size)
+        assertEquals("Rapat sprint", hasil[0].title)
+    }
+
+    @Test
+    fun filterKategori_hanyaKategoriTersebut() {
+        val hasil = listOf(task("A", category = Categories.Pribadi), task("B")).search("", "Pribadi", TaskSort.Tanggal)
+        assertEquals(listOf("A"), hasil.map { it.title })
+    }
+
+    @Test
+    fun urutTanggal_laluWaktu() {
+        val hasil = listOf(
+            task("B", time = "09:00", date = LocalDate(2026, 11, 13)),
+            task("A", time = "07:00", date = LocalDate(2026, 11, 14)),
+            task("C", time = "06:00", date = LocalDate(2026, 11, 13)),
+        ).search("", null, TaskSort.Tanggal)
+        assertEquals(listOf("C", "B", "A"), hasil.map { it.title })
+    }
+
+    @Test
+    fun urutPrioritas_tinggiDulu() {
+        val hasil = listOf(
+            task("Rendah", priority = Priorities.Rendah),
+            task("Tinggi", priority = Priorities.Tinggi),
+            task("Sedang", priority = Priorities.Sedang),
+        ).search("", null, TaskSort.Prioritas)
+        assertEquals(listOf("Tinggi", "Sedang", "Rendah"), hasil.map { it.title })
+    }
+
+    @Test
+    fun urutJudul_abjad() {
+        val hasil = listOf(task("cincau"), task("bakso"), task("Apel")).search("", null, TaskSort.Judul)
+        assertEquals(listOf("Apel", "bakso", "cincau"), hasil.map { it.title })
     }
 }

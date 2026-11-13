@@ -36,9 +36,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.taskku.data.Categories
-import com.taskku.data.Priorities
-import com.taskku.data.Task
 import com.taskku.data.TaskRepository
+import com.taskku.data.TaskSort
+import com.taskku.data.search
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.LocalTaskKuText
 import com.taskku.ui.DockBar
@@ -46,10 +46,6 @@ import com.taskku.ui.FabButton
 import com.taskku.ui.FieldBox
 import com.taskku.ui.TaskCard
 import com.taskku.ui.TaskKuChip
-
-private enum class SortMode(val label: String) {
-    Tanggal("Tanggal"), Prioritas("Prioritas"), Judul("Judul"),
-}
 
 @Composable
 fun TaskListScreen(
@@ -62,24 +58,9 @@ fun TaskListScreen(
     val txt = LocalTaskKuText.current
     var query by remember { mutableStateOf("") }
     var categoryFilter by remember { mutableStateOf<String?>(null) } // null = Semua
-    var sortMode by remember { mutableStateOf(SortMode.Tanggal) }
+    var sortMode by remember { mutableStateOf(TaskSort.Tanggal) }
 
-    val results = remember(query, categoryFilter, sortMode) {
-        val base = TaskRepository.tasks.filter { task ->
-            (query.isBlank() || task.title.contains(query, ignoreCase = true)) &&
-                (categoryFilter == null || task.category.label == categoryFilter)
-        }
-        when (sortMode) {
-            SortMode.Tanggal -> base.sortedWith(
-                compareBy({ it.date }, { it.time }),
-            )
-            SortMode.Prioritas -> base.sortedWith(
-                compareByDescending<Task> { Priorities.all.indexOfFirst { p -> p.label == it.priority.label } }
-                    .thenBy { it.time },
-            )
-            SortMode.Judul -> base.sortedWith(compareBy { it.title.lowercase() })
-        }
-    }
+    val results = TaskRepository.tasks.search(query, categoryFilter, sortMode)
 
     Box(Modifier.fillMaxSize().background(colors.bg)) {
         Column(
@@ -128,7 +109,7 @@ fun TaskListScreen(
                 Spacer(Modifier.width(6.dp))
                 Text("Urutkan:", style = txt.small, color = colors.textMuted)
                 Spacer(Modifier.width(6.dp))
-                SortMode.entries.forEach { mode ->
+                TaskSort.entries.forEach { mode ->
                     TaskKuChip(mode.label, selected = sortMode == mode) { sortMode = mode }
                     Spacer(Modifier.width(6.dp))
                 }
