@@ -1,0 +1,76 @@
+-- Skema TaskKu: tugas, subtask, kategori, dan pengaturan app.
+-- Warna kategori disimpan sebagai ARGB (Long); label kategori/prioritas
+-- dirujuk sebagai teks dan dipetakan balik ke objek statis di lapisan data.
+--
+-- Catatan: kolom boolean sengaja memakai INTEGER 0/1 (bukan `AS Boolean`) untuk
+-- menghindari bug generator SQLDelight yang menyuntikkan `import Boolean` tak valid.
+
+CREATE TABLE categories (
+    label TEXT NOT NULL PRIMARY KEY,
+    color INTEGER NOT NULL
+);
+
+CREATE TABLE tasks (
+    id INTEGER NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    categoryLabel TEXT NOT NULL,
+    priorityLabel TEXT NOT NULL,
+    time TEXT NOT NULL,
+    section TEXT NOT NULL,
+    isDone INTEGER NOT NULL DEFAULT 0,
+    description TEXT,
+    reminder INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE subtasks (
+    taskId INTEGER NOT NULL,
+    position INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    isDone INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (taskId, position)
+);
+
+CREATE TABLE settings (
+    settingKey TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+insertCategory:
+INSERT OR IGNORE INTO categories(label, color) VALUES (?, ?);
+
+selectCategories:
+SELECT * FROM categories ORDER BY rowid;
+
+insertTask:
+INSERT OR REPLACE INTO tasks(id, title, categoryLabel, priorityLabel, time, section, isDone, description, reminder)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteTask:
+DELETE FROM tasks WHERE id = ?;
+
+countTasks:
+SELECT COUNT(*) FROM tasks;
+
+selectTasks:
+SELECT * FROM tasks ORDER BY id;
+
+deleteSubtasksOfTask:
+DELETE FROM subtasks WHERE taskId = ?;
+
+insertSubtask:
+INSERT OR REPLACE INTO subtasks(taskId, position, title, isDone) VALUES (?, ?, ?, ?);
+
+selectSubtasks:
+SELECT * FROM subtasks ORDER BY taskId, position;
+
+toggleTaskDone:
+UPDATE tasks SET isDone = ? WHERE id = ?;
+
+toggleSubtaskDone:
+UPDATE subtasks SET isDone = ? WHERE taskId = ? AND position = ?;
+
+selectSetting:
+SELECT value FROM settings WHERE settingKey = ?;
+
+putSetting:
+INSERT OR REPLACE INTO settings(settingKey, value) VALUES (?, ?);

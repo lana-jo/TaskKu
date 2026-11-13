@@ -1,0 +1,24 @@
+[versions]
+kotlin = "2.4.21"
+composeMultiplatform = "1.12.2"
+agp = "9.5.1"
+androidCompileSdk = "37"
+androidMinSdk = "26"
+androidTargetSdk = "36"
+activityCompose = "1.10.1"
+sqldelight = "2.4.1"
+
+[libraries]
+androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqldelight" }
+sqldelight-androidDriver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-sqliteDriver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-nativeDriver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+
+[plugins]
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }

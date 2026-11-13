@@ -1,0 +1,4441 @@
+[
+ {
+  "command": "variable.createCollection",
+  "params": {
+   "name": "Warna",
+   "modes": [
+    "Terang",
+    "Gelap"
+   ]
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "bg",
+   "type": "color",
+   "values": {
+    "Terang": "#F4F4F9",
+    "Gelap": "#0F0F15"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "surface",
+   "type": "color",
+   "values": {
+    "Terang": "#FFFFFF",
+    "Gelap": "#1C1C24"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "surface-2",
+   "type": "color",
+   "values": {
+    "Terang": "#F0F0F6",
+    "Gelap": "#27272F"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "text",
+   "type": "color",
+   "values": {
+    "Terang": "#131319",
+    "Gelap": "#F5F5FA"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "text-muted",
+   "type": "color",
+   "values": {
+    "Terang": "#74748A",
+    "Gelap": "#9C9CB1"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "border",
+   "type": "color",
+   "values": {
+    "Terang": "#E7E7EF",
+    "Gelap": "#2B2B36"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "primary",
+   "type": "color",
+   "values": {
+    "Terang": "#5B54F0",
+    "Gelap": "#9089FF"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "primary-soft",
+   "type": "color",
+   "values": {
+    "Terang": "#ECEBFE",
+    "Gelap": "#2C2A55"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "primary-fg",
+   "type": "color",
+   "values": {
+    "Terang": "#FFFFFF",
+    "Gelap": "#FFFFFF"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "success",
+   "type": "color",
+   "values": {
+    "Terang": "#12B76A",
+    "Gelap": "#34D399"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "warning",
+   "type": "color",
+   "values": {
+    "Terang": "#F79009",
+    "Gelap": "#FBBF24"
+   }
+  }
+ },
+ {
+  "command": "variable.create",
+  "params": {
+   "collection": "Warna",
+   "name": "danger",
+   "type": "color",
+   "values": {
+    "Terang": "#E5484D",
+    "Gelap": "#F87171"
+   }
+  }
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 6149,
+   "y": 0,
+   "name": "14 Daftar Tugas",
+   "props": {
+    "fill": {
+     "$var": "bg"
+    },
+    "layout": "vertical",
+    "clip": true
+   },
+   "width": 393,
+   "height": 852
+  },
+  "as": "ls_ls14_1"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Status Bar",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "padding": [
+     6,
+     24,
+     0,
+     24
+    ],
+    "mainAlign": "space-between",
+    "crossAlign": "center",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_ls14_1"
+   },
+   "height": 47
+  },
+  "as": "ls_sb_2"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "9:41",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_sb_2"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 14,
+    "fill": {
+     "$var": "text"
+    }
+   },
+   "name": "Waktu"
+  },
+  "as": "ls_t_3"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Sistem",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 6,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_sb_2"
+   }
+  },
+  "as": "ls_sbr_4"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Sinyal",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 1.5,
+    "crossAlign": "max",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_sbr_4"
+   }
+  },
+  "as": "ls_sig_5"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_5"
+   },
+   "width": 3,
+   "height": 4
+  },
+  "as": "ls_sig0_6"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_5"
+   },
+   "width": 3,
+   "height": 6
+  },
+  "as": "ls_sig1_7"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_5"
+   },
+   "width": 3,
+   "height": 8
+  },
+  "as": "ls_sig2_8"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_5"
+   },
+   "width": 3,
+   "height": 11
+  },
+  "as": "ls_sig3_9"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M2.5 9a15.5 15.5 0 0 1 19 0M5.2 12.4a11 11 0 0 1 13.6 0M8.3 15.6a6.3 6.3 0 0 1 7.4 0",
+   "parent": {
+    "$ref": "ls_sbr_4"
+   },
+   "width": 15,
+   "props": {
+    "stroke": {
+     "$var": "text"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/wifi"
+  },
+  "as": "ls_ic_10"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Baterai",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 1.5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_sbr_4"
+   }
+  },
+  "as": "ls_bat_11"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "b",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 4,
+    "padding": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 1,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_bat_11"
+   },
+   "width": 23,
+   "height": 12
+  },
+  "as": "ls_batb_12"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "lvl",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 2
+   },
+   "parent": {
+    "$ref": "ls_batb_12"
+   },
+   "width": 14,
+   "height": 6
+  },
+  "as": "ls_batl_13"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "tip",
+   "props": {
+    "fill": {
+     "$var": "text-muted"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_bat_11"
+   },
+   "width": 1.5,
+   "height": 4
+  },
+  "as": "ls_batt_14"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Konten",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "padding": [
+     2,
+     24,
+     112,
+     24
+    ],
+    "gap": 12,
+    "sizingH": "fill",
+    "sizingV": "fill"
+   },
+   "parent": {
+    "$ref": "ls_ls14_1"
+   }
+  },
+  "as": "ls_lsb_15"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Header",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lshdr_16"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Kembali",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lshdr_16"
+   },
+   "width": 44,
+   "height": 44
+  },
+  "as": "ls_lsback_17"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M15 18l-6-6 6-6",
+   "parent": {
+    "$ref": "ls_lsback_17"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/chevron_left"
+  },
+  "as": "ls_lsbacki_18"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Semua Tugas",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lshdr_16"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 19,
+    "fill": {
+     "$var": "text"
+    },
+    "letterSpacing": "-1%"
+   },
+   "name": "lsjudul"
+  },
+  "as": "ls_t_19"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Hitung",
+   "props": {
+    "fill": {
+     "$var": "surface-2"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     3,
+     10
+    ],
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lshdr_16"
+   }
+  },
+  "as": "ls_lspill_20"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "9",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lspill_20"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lspillt"
+  },
+  "as": "ls_t_21"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Spacer",
+   "props": {
+    "fill": "none",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lshdr_16"
+   },
+   "height": 1
+  },
+  "as": "ls_lssp_22"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Filter",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 8,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lsch_23"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Chip/Semua",
+   "props": {
+    "fill": {
+     "$var": "primary"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     8,
+     16
+    ],
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsch_23"
+   }
+  },
+  "as": "ls_lsch1_24"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Semua",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsch1_24"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 13,
+    "fill": {
+     "$var": "primary-fg"
+    }
+   },
+   "name": "label"
+  },
+  "as": "ls_t_25"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Chip/Hari Ini",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     8,
+     16
+    ],
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug",
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 1,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lsch_23"
+   }
+  },
+  "as": "ls_lsch2_26"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Hari Ini",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsch2_26"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 13,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "label"
+  },
+  "as": "ls_t_27"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Chip/Terjadwal",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     8,
+     16
+    ],
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug",
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 1,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lsch_23"
+   }
+  },
+  "as": "ls_lsch3_28"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Terjadwal",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsch3_28"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 13,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "label"
+  },
+  "as": "ls_t_29"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Chip/Selesai",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     8,
+     16
+    ],
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug",
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 1,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lsch_23"
+   }
+  },
+  "as": "ls_lsch4_30"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Selesai",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsch4_30"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 13,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "label"
+  },
+  "as": "ls_t_31"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "HARI INI — 3 TUGAS",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsb_15"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 10,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "letterSpacing": "8%"
+   },
+   "name": "lsm1"
+  },
+  "as": "ls_t_32"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Kirim laporan mingguan",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lst1_33"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": {
+     "$var": "success"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "mainAlign": "center",
+    "crossAlign": "center"
+   },
+   "parent": {
+    "$ref": "ls_lst1_33"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst1cb_34"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M20 6L9 17l-5-5",
+   "parent": {
+    "$ref": "ls_lst1cb_34"
+   },
+   "width": 13,
+   "props": {
+    "stroke": "#FFFFFF",
+    "strokeWeight": 3,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/check"
+  },
+  "as": "ls_lst1ck_35"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst1_33"
+   }
+  },
+  "as": "ls_lst1col_36"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Kirim laporan mingguan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst1col_36"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "lineHeight": "135%",
+    "textDecoration": "strikethrough"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_37"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst1col_36"
+   }
+  },
+  "as": "ls_lst1meta_38"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#ECEBFE",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst1meta_38"
+   }
+  },
+  "as": "ls_lst1tag_39"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#5B54F0",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst1tag_39"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst1tagd_40"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Pekerjaan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst1tag_39"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#5B54F0"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_41"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst1meta_38"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst1cl_42"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "08:00",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst1meta_38"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_43"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst1_33"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#12B76A",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst1prio_44"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Rapat sprint dengan tim ",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lst2_45"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 2,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lst2_45"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst2cb_46"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst2_45"
+   }
+  },
+  "as": "ls_lst2col_47"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Rapat sprint dengan tim desain",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst2col_47"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    },
+    "lineHeight": "135%"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_48"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst2col_47"
+   }
+  },
+  "as": "ls_lst2meta_49"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#ECEBFE",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst2meta_49"
+   }
+  },
+  "as": "ls_lst2tag_50"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#5B54F0",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst2tag_50"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst2tagd_51"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Pekerjaan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst2tag_50"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#5B54F0"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_52"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst2meta_49"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst2cl_53"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "09:00",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst2meta_49"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_54"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst2_45"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#E5484D",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst2prio_55"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Belanja bulanan di pasar",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lst3_56"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 2,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lst3_56"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst3cb_57"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst3_56"
+   }
+  },
+  "as": "ls_lst3col_58"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Belanja bulanan di pasar",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst3col_58"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    },
+    "lineHeight": "135%"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_59"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst3col_58"
+   }
+  },
+  "as": "ls_lst3meta_60"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#FDF2E1",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst3meta_60"
+   }
+  },
+  "as": "ls_lst3tag_61"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#DC8A0E",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst3tag_61"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst3tagd_62"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Belanja",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst3tag_61"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#DC8A0E"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_63"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst3meta_60"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst3cl_64"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "16:00",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst3meta_60"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_65"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst3_56"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#F79009",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst3prio_66"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "TERJADWAL — 2 TUGAS",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsb_15"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 10,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "letterSpacing": "8%"
+   },
+   "name": "lsm2"
+  },
+  "as": "ls_t_67"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Kontrol dokter gigi",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lst4_68"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 2,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lst4_68"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst4cb_69"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst4_68"
+   }
+  },
+  "as": "ls_lst4col_70"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Kontrol dokter gigi",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst4col_70"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    },
+    "lineHeight": "135%"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_71"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst4col_70"
+   }
+  },
+  "as": "ls_lst4meta_72"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#FDEBEB",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst4meta_72"
+   }
+  },
+  "as": "ls_lst4tag_73"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#E5484D",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst4tag_73"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst4tagd_74"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Kesehatan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst4tag_73"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#E5484D"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_75"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst4meta_72"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst4cl_76"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Besok 08:30",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst4meta_72"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_77"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst4_68"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#E5484D",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst4prio_78"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Olahraga pagi: lari 5 km",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lst5_79"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 2,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lst5_79"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst5cb_80"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst5_79"
+   }
+  },
+  "as": "ls_lst5col_81"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Olahraga pagi: lari 5 km",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst5col_81"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    },
+    "lineHeight": "135%"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_82"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst5col_81"
+   }
+  },
+  "as": "ls_lst5meta_83"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#E5F6EF",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst5meta_83"
+   }
+  },
+  "as": "ls_lst5tag_84"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#0E9F6E",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst5tag_84"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst5tagd_85"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Pribadi",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst5tag_84"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#0E9F6E"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_86"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst5meta_83"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst5cl_87"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Besok 06:00",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst5meta_83"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_88"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst5_79"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#12B76A",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst5prio_89"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "SELESAI — 1 TUGAS",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsb_15"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 10,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "letterSpacing": "8%"
+   },
+   "name": "lsm3"
+  },
+  "as": "ls_t_90"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Setor sampah & pilah",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb_15"
+   }
+  },
+  "as": "ls_lst6_91"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": {
+     "$var": "success"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "mainAlign": "center",
+    "crossAlign": "center"
+   },
+   "parent": {
+    "$ref": "ls_lst6_91"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst6cb_92"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M20 6L9 17l-5-5",
+   "parent": {
+    "$ref": "ls_lst6cb_92"
+   },
+   "width": 13,
+   "props": {
+    "stroke": "#FFFFFF",
+    "strokeWeight": 3,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/check"
+  },
+  "as": "ls_lst6ck_93"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst6_91"
+   }
+  },
+  "as": "ls_lst6col_94"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Setor sampah & pilah",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst6col_94"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "lineHeight": "135%",
+    "textDecoration": "strikethrough"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_95"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst6col_94"
+   }
+  },
+  "as": "ls_lst6meta_96"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#E5F6EF",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst6meta_96"
+   }
+  },
+  "as": "ls_lst6tag_97"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#0E9F6E",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst6tag_97"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst6tagd_98"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Pribadi",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst6tag_97"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#0E9F6E"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_99"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst6meta_96"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst6cl_100"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "07:00",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst6meta_96"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_101"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst6_91"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#12B76A",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst6prio_102"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 16,
+   "y": 774,
+   "name": "Dock",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     0,
+     10
+    ],
+    "mainAlign": "space-between",
+    "crossAlign": "center",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131926",
+      "offset": [
+       0,
+       12
+      ],
+      "radius": 32,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ],
+    "absolute": true
+   },
+   "parent": {
+    "$ref": "ls_ls14_1"
+   },
+   "width": 361,
+   "height": 64
+  },
+  "as": "ls_lsd_103"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Beranda",
+   "props": {
+    "fill": {
+     "$var": "primary-soft"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     14
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsd_103"
+   }
+  },
+  "as": "ls_lsdii0_104"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M3 10.2L12 3l9 7.2V19.5a2 2 0 0 1-2 2h-14a2 2 0 0 1-2-2zM9.2 21.5v-6.2h5.6v6.2",
+   "parent": {
+    "$ref": "ls_lsdii0_104"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "primary"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/home"
+  },
+  "as": "ls_lsdiic0_105"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Beranda",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsdii0_104"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": {
+     "$var": "primary"
+    }
+   },
+   "name": "lsdil0"
+  },
+  "as": "ls_t_106"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Kalender",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     6
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsd_103"
+   }
+  },
+  "as": "ls_lsdii1_107"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M8 2v4M16 2v4M3.5 9.5h17M5.5 4h13a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z",
+   "parent": {
+    "$ref": "ls_lsdii1_107"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/calendar"
+  },
+  "as": "ls_lsdiic1_108"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Kalender",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsdii1_107"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lsdil1"
+  },
+  "as": "ls_t_109"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Statistik",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     6
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsd_103"
+   }
+  },
+  "as": "ls_lsdii2_110"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5.5 20.5v-7M12 20.5v-13M18.5 20.5v-10",
+   "parent": {
+    "$ref": "ls_lsdii2_110"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/chart"
+  },
+  "as": "ls_lsdiic2_111"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Statistik",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsdii2_110"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lsdil2"
+  },
+  "as": "ls_t_112"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Profil",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     6
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsd_103"
+   }
+  },
+  "as": "ls_lsdii3_113"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 12.5a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4zM19.8 21.5v-1a5.8 5.8 0 0 0-5.8-5.8h-4a5.8 5.8 0 0 0-5.8 5.8v1",
+   "parent": {
+    "$ref": "ls_lsdii3_113"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/user"
+  },
+  "as": "ls_lsdiic3_114"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Profil",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsdii3_113"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lsdil3"
+  },
+  "as": "ls_t_115"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 6622,
+   "y": 0,
+   "name": "15 Pencarian",
+   "props": {
+    "fill": {
+     "$var": "bg"
+    },
+    "layout": "vertical",
+    "clip": true
+   },
+   "width": 393,
+   "height": 852
+  },
+  "as": "ls_ls15_116"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Status Bar",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "padding": [
+     6,
+     24,
+     0,
+     24
+    ],
+    "mainAlign": "space-between",
+    "crossAlign": "center",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_ls15_116"
+   },
+   "height": 47
+  },
+  "as": "ls_sb_117"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "9:41",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_sb_117"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 14,
+    "fill": {
+     "$var": "text"
+    }
+   },
+   "name": "Waktu"
+  },
+  "as": "ls_t_118"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Sistem",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 6,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_sb_117"
+   }
+  },
+  "as": "ls_sbr_119"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Sinyal",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 1.5,
+    "crossAlign": "max",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_sbr_119"
+   }
+  },
+  "as": "ls_sig_120"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_120"
+   },
+   "width": 3,
+   "height": 4
+  },
+  "as": "ls_sig0_121"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_120"
+   },
+   "width": 3,
+   "height": 6
+  },
+  "as": "ls_sig1_122"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_120"
+   },
+   "width": 3,
+   "height": 8
+  },
+  "as": "ls_sig2_123"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "bar",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_sig_120"
+   },
+   "width": 3,
+   "height": 11
+  },
+  "as": "ls_sig3_124"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M2.5 9a15.5 15.5 0 0 1 19 0M5.2 12.4a11 11 0 0 1 13.6 0M8.3 15.6a6.3 6.3 0 0 1 7.4 0",
+   "parent": {
+    "$ref": "ls_sbr_119"
+   },
+   "width": 15,
+   "props": {
+    "stroke": {
+     "$var": "text"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/wifi"
+  },
+  "as": "ls_ic_125"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Baterai",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 1.5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_sbr_119"
+   }
+  },
+  "as": "ls_bat_126"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "b",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 4,
+    "padding": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 1,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_bat_126"
+   },
+   "width": 23,
+   "height": 12
+  },
+  "as": "ls_batb_127"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "lvl",
+   "props": {
+    "fill": {
+     "$var": "text"
+    },
+    "cornerRadius": 2
+   },
+   "parent": {
+    "$ref": "ls_batb_127"
+   },
+   "width": 14,
+   "height": 6
+  },
+  "as": "ls_batl_128"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "tip",
+   "props": {
+    "fill": {
+     "$var": "text-muted"
+    },
+    "cornerRadius": 1
+   },
+   "parent": {
+    "$ref": "ls_bat_126"
+   },
+   "width": 1.5,
+   "height": 4
+  },
+  "as": "ls_batt_129"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Konten",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "padding": [
+     2,
+     24,
+     112,
+     24
+    ],
+    "gap": 12,
+    "sizingH": "fill",
+    "sizingV": "fill"
+   },
+   "parent": {
+    "$ref": "ls_ls15_116"
+   }
+  },
+  "as": "ls_lsb2_130"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Pencarian",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lsb2_130"
+   }
+  },
+  "as": "ls_lssr_131"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Field",
+   "props": {
+    "fill": {
+     "$var": "surface-2"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     0,
+     16
+    ],
+    "gap": 8,
+    "crossAlign": "center",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lssr_131"
+   },
+   "height": 46
+  },
+  "as": "ls_lsfld_132"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.35-4.35",
+   "parent": {
+    "$ref": "ls_lsfld_132"
+   },
+   "width": 17,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/search"
+  },
+  "as": "ls_lsfldi_133"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "rap",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsfld_132"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    }
+   },
+   "name": "lsq"
+  },
+  "as": "ls_t_134"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Clear",
+   "props": {
+    "fill": {
+     "$var": "border"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "mainAlign": "center",
+    "crossAlign": "center"
+   },
+   "parent": {
+    "$ref": "ls_lsfld_132"
+   },
+   "width": 22,
+   "height": 22
+  },
+  "as": "ls_lsclr_135"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M18 6L6 18M6 6l12 12",
+   "parent": {
+    "$ref": "ls_lsclr_135"
+   },
+   "width": 12,
+   "props": {
+    "stroke": "#FFFFFF",
+    "strokeWeight": 2.5,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/x"
+  },
+  "as": "ls_lsclri_136"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Batal",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lssr_131"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 13.5,
+    "fill": {
+     "$var": "primary"
+    }
+   },
+   "name": "lsbatal"
+  },
+  "as": "ls_t_137"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "PENCARIAN TERAKHIR",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsb2_130"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 10,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "letterSpacing": "8%"
+   },
+   "name": "lsm4"
+  },
+  "as": "ls_t_138"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Riwayat",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "vertical",
+    "padding": [
+     8,
+     14
+    ],
+    "gap": 2,
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb2_130"
+   }
+  },
+  "as": "ls_lsrw_139"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Riwayat1",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw_139"
+   },
+   "height": 44
+  },
+  "as": "ls_lsrw0_140"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lsrw0_140"
+   },
+   "width": 16,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lsrwi0_141"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "rapat sprint",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsrw0_140"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 14,
+    "fill": {
+     "$var": "text"
+    }
+   },
+   "name": "lsrwt0"
+  },
+  "as": "ls_t_142"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Spacer",
+   "props": {
+    "fill": "none",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw0_140"
+   },
+   "height": 1
+  },
+  "as": "ls_lsrws0_143"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M9 18l6-6-6-6",
+   "parent": {
+    "$ref": "ls_lsrw0_140"
+   },
+   "width": 14,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/chevron_right"
+  },
+  "as": "ls_lsrwc0_144"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Divider",
+   "props": {
+    "fill": {
+     "$var": "border"
+    },
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw_139"
+   },
+   "height": 1
+  },
+  "as": "ls_lsdv0_145"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Riwayat2",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw_139"
+   },
+   "height": 44
+  },
+  "as": "ls_lsrw1_146"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lsrw1_146"
+   },
+   "width": 16,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lsrwi1_147"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "laporan mingguan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsrw1_146"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 14,
+    "fill": {
+     "$var": "text"
+    }
+   },
+   "name": "lsrwt1"
+  },
+  "as": "ls_t_148"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Spacer",
+   "props": {
+    "fill": "none",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw1_146"
+   },
+   "height": 1
+  },
+  "as": "ls_lsrws1_149"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M9 18l6-6-6-6",
+   "parent": {
+    "$ref": "ls_lsrw1_146"
+   },
+   "width": 14,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/chevron_right"
+  },
+  "as": "ls_lsrwc1_150"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Divider",
+   "props": {
+    "fill": {
+     "$var": "border"
+    },
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw_139"
+   },
+   "height": 1
+  },
+  "as": "ls_lsdv1_151"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Riwayat3",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw_139"
+   },
+   "height": 44
+  },
+  "as": "ls_lsrw2_152"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lsrw2_152"
+   },
+   "width": 16,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lsrwi2_153"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "review PR",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsrw2_152"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 14,
+    "fill": {
+     "$var": "text"
+    }
+   },
+   "name": "lsrwt2"
+  },
+  "as": "ls_t_154"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Spacer",
+   "props": {
+    "fill": "none",
+    "sizingH": "fill"
+   },
+   "parent": {
+    "$ref": "ls_lsrw2_152"
+   },
+   "height": 1
+  },
+  "as": "ls_lsrws2_155"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M9 18l6-6-6-6",
+   "parent": {
+    "$ref": "ls_lsrw2_152"
+   },
+   "width": 14,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/chevron_right"
+  },
+  "as": "ls_lsrwc2_156"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "HASIL — 2 TUGAS",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lsb2_130"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 10,
+    "fill": {
+     "$var": "text-muted"
+    },
+    "letterSpacing": "8%"
+   },
+   "name": "lsm5"
+  },
+  "as": "ls_t_157"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Rapat sprint dengan tim ",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb2_130"
+   }
+  },
+  "as": "ls_lst7_158"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 2,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lst7_158"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst7cb_159"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst7_158"
+   }
+  },
+  "as": "ls_lst7col_160"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Rapat sprint dengan tim desain",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst7col_160"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    },
+    "lineHeight": "135%"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_161"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst7col_160"
+   }
+  },
+  "as": "ls_lst7meta_162"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#ECEBFE",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst7meta_162"
+   }
+  },
+  "as": "ls_lst7tag_163"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#5B54F0",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst7tag_163"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst7tagd_164"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Pekerjaan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst7tag_163"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#5B54F0"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_165"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst7meta_162"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst7cl_166"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "09:00",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst7meta_162"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_167"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst7_158"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#E5484D",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst7prio_168"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tugas / Siapkan ruang rapat",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 20,
+    "layout": "horizontal",
+    "padding": [
+     13,
+     16
+    ],
+    "gap": 13,
+    "crossAlign": "center",
+    "sizingH": "fill",
+    "sizingV": "hug",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131912",
+      "offset": [
+       0,
+       4
+      ],
+      "radius": 16,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ]
+   },
+   "parent": {
+    "$ref": "ls_lsb2_130"
+   }
+  },
+  "as": "ls_lst8_169"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Cek",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "stroke": {
+     "$var": "border"
+    },
+    "strokeWeight": 2,
+    "strokeAlign": "inside"
+   },
+   "parent": {
+    "$ref": "ls_lst8_169"
+   },
+   "width": 24,
+   "height": 24
+  },
+  "as": "ls_lst8cb_170"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Isi",
+   "props": {
+    "fill": "none",
+    "layout": "vertical",
+    "gap": 7,
+    "sizingH": "fill",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst8_169"
+   }
+  },
+  "as": "ls_lst8col_171"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Siapkan ruang rapat",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst8col_171"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Medium",
+    "fontSize": 15,
+    "fill": {
+     "$var": "text"
+    },
+    "lineHeight": "135%"
+   },
+   "name": "judul"
+  },
+  "as": "ls_t_172"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Meta",
+   "props": {
+    "fill": "none",
+    "layout": "horizontal",
+    "gap": 10,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst8col_171"
+   }
+  },
+  "as": "ls_lst8meta_173"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Tag",
+   "props": {
+    "fill": "#ECEBFE",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     4,
+     10
+    ],
+    "gap": 5,
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lst8meta_173"
+   }
+  },
+  "as": "ls_lst8tag_174"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "dot",
+   "props": {
+    "fill": "#5B54F0",
+    "cornerRadius": 999
+   },
+   "parent": {
+    "$ref": "ls_lst8tag_174"
+   },
+   "width": 5,
+   "height": 5
+  },
+  "as": "ls_lst8tagd_175"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Pekerjaan",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst8tag_174"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": "#5B54F0"
+   },
+   "name": "tagl"
+  },
+  "as": "ls_t_176"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6.5v5.5l3.5 2",
+   "parent": {
+    "$ref": "ls_lst8meta_173"
+   },
+   "width": 12.5,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/clock"
+  },
+  "as": "ls_lst8cl_177"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "10:30",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lst8meta_173"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11.5,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "jam"
+  },
+  "as": "ls_t_178"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5 21V4M5 4.5c4-2 7 2 12 .5v8c-5 1.5-8-2.5-12-.5",
+   "parent": {
+    "$ref": "ls_lst8_169"
+   },
+   "width": 15,
+   "props": {
+    "stroke": "#F79009",
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/flag"
+  },
+  "as": "ls_lst8prio_179"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 16,
+   "y": 774,
+   "name": "Dock",
+   "props": {
+    "fill": {
+     "$var": "surface"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     0,
+     10
+    ],
+    "mainAlign": "space-between",
+    "crossAlign": "center",
+    "effects": [
+     {
+      "type": "dropShadow",
+      "color": "#13131926",
+      "offset": [
+       0,
+       12
+      ],
+      "radius": 32,
+      "spread": 0,
+      "visible": true,
+      "blend": "normal"
+     }
+    ],
+    "absolute": true
+   },
+   "parent": {
+    "$ref": "ls_ls15_116"
+   },
+   "width": 361,
+   "height": 64
+  },
+  "as": "ls_lss_180"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Beranda",
+   "props": {
+    "fill": {
+     "$var": "primary-soft"
+    },
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     14
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lss_180"
+   }
+  },
+  "as": "ls_lssii0_181"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M3 10.2L12 3l9 7.2V19.5a2 2 0 0 1-2 2h-14a2 2 0 0 1-2-2zM9.2 21.5v-6.2h5.6v6.2",
+   "parent": {
+    "$ref": "ls_lssii0_181"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "primary"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/home"
+  },
+  "as": "ls_lssiic0_182"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Beranda",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lssii0_181"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "SemiBold",
+    "fontSize": 11,
+    "fill": {
+     "$var": "primary"
+    }
+   },
+   "name": "lssil0"
+  },
+  "as": "ls_t_183"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Kalender",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     6
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lss_180"
+   }
+  },
+  "as": "ls_lssii1_184"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M8 2v4M16 2v4M3.5 9.5h17M5.5 4h13a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z",
+   "parent": {
+    "$ref": "ls_lssii1_184"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/calendar"
+  },
+  "as": "ls_lssiic1_185"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Kalender",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lssii1_184"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lssil1"
+  },
+  "as": "ls_t_186"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Statistik",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     6
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lss_180"
+   }
+  },
+  "as": "ls_lssii2_187"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M5.5 20.5v-7M12 20.5v-13M18.5 20.5v-10",
+   "parent": {
+    "$ref": "ls_lssii2_187"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/chart"
+  },
+  "as": "ls_lssiic2_188"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Statistik",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lssii2_187"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lssil2"
+  },
+  "as": "ls_t_189"
+ },
+ {
+  "command": "frame.create",
+  "params": {
+   "x": 0,
+   "y": 0,
+   "name": "Menu/Profil",
+   "props": {
+    "fill": "none",
+    "cornerRadius": 999,
+    "layout": "horizontal",
+    "padding": [
+     10,
+     6
+    ],
+    "gap": 6,
+    "mainAlign": "center",
+    "crossAlign": "center",
+    "sizingH": "hug",
+    "sizingV": "hug"
+   },
+   "parent": {
+    "$ref": "ls_lss_180"
+   }
+  },
+  "as": "ls_lssii3_190"
+ },
+ {
+  "command": "vector.create",
+  "params": {
+   "path": "M12 12.5a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4zM19.8 21.5v-1a5.8 5.8 0 0 0-5.8-5.8h-4a5.8 5.8 0 0 0-5.8 5.8v1",
+   "parent": {
+    "$ref": "ls_lssii3_190"
+   },
+   "width": 20,
+   "props": {
+    "stroke": {
+     "$var": "text-muted"
+    },
+    "strokeWeight": 2,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+   },
+   "name": "i/user"
+  },
+  "as": "ls_lssiic3_191"
+ },
+ {
+  "command": "text.create",
+  "params": {
+   "text": "Profil",
+   "x": 0,
+   "y": 0,
+   "parent": {
+    "$ref": "ls_lssii3_190"
+   },
+   "props": {
+    "fontFamily": "Plus Jakarta Sans",
+    "fontStyle": "Regular",
+    "fontSize": 11,
+    "fill": {
+     "$var": "text-muted"
+    }
+   },
+   "name": "lssil3"
+  },
+  "as": "ls_t_192"
+ }
+]
