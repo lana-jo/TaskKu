@@ -37,7 +37,7 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install Android platform
-        run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0" "platform-tools"
+        run: sdkmanager "platforms;android-37.0" "build-tools;37.0.0" "platform-tools"
 
       - name: Build desktop JVM
         run: ./gradlew :composeApp:compileKotlinDesktop --stacktrace
@@ -45,8 +45,10 @@ jobs:
       - name: Build Android debug APK
         run: ./gradlew :androidApp:assembleDebug --stacktrace
 
+      # androidApp belum punya source set test; kalau nanti ada, tambahkan
+      # :androidApp:testDebugUnitTest di sini.
       - name: Run tests
-        run: ./gradlew :composeApp:desktopTest :androidApp:testDebugUnitTest --stacktrace
+        run: ./gradlew :composeApp:desktopTest --stacktrace
 
       - name: Upload debug APK
         if: always()
