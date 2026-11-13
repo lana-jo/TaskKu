@@ -41,6 +41,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.taskku.data.startOfWeek
+import com.taskku.data.today
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.TaskKuShapes
 import com.taskku.theme.LocalTaskKuText
@@ -152,7 +154,12 @@ fun SideNav(
                 }
             }
             Spacer(Modifier.weight(1f))
-            // Kartu progres mingguan (demo; persistensi per-minggu menyusul)
+            // Kartu progres mingguan: selesai vs total tugas minggu berjalan (live dari repo).
+            val today = com.taskku.data.today()
+            val weekStart = today.startOfWeek()
+            val weekTasks = com.taskku.data.TaskRepository.tasks.filter { it.date >= weekStart }
+            val weekDone = weekTasks.count { it.isDone }
+            val weekPct = if (weekTasks.isEmpty()) 0f else weekDone.toFloat() / weekTasks.size
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
@@ -162,7 +169,7 @@ fun SideNav(
                     .padding(16.dp),
             ) {
                 Text("PROGRES MINGGU INI", style = txt.micro, color = colors.textMuted)
-                Text("24 dari 40 tugas (demo)", style = txt.section, color = colors.text)
+                Text("$weekDone dari ${weekTasks.size} tugas", style = txt.section, color = colors.text)
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -172,7 +179,7 @@ fun SideNav(
                 ) {
                     Box(
                         Modifier
-                            .fillMaxWidth(0.6f)
+                            .fillMaxWidth(weekPct)
                             .height(6.dp)
                             .clip(RoundedCornerShape(999.dp))
                             .background(colors.primary),
@@ -270,11 +277,23 @@ fun DesktopHeader(
                                 .clip(androidx.compose.foundation.shape.CircleShape)
                                 .background(colors.gradient),
                         ) {
-                            Text("R", style = txt.bodyMedium, color = Color.White)
+                            Text(
+                                (com.taskku.data.UserSession.userName ?: "?").take(1).uppercase(),
+                                style = txt.bodyMedium,
+                                color = Color.White,
+                            )
                         }
                         Column {
-                            Text("Rian Pratama", style = txt.bodyMedium.copy(fontSize = 13.5.sp), color = colors.text)
-                            Text("rian.pratama@mail.com", style = txt.small.copy(fontSize = 10.5.sp), color = colors.textMuted)
+                            Text(
+                                com.taskku.data.UserSession.userName ?: "Pengguna",
+                                style = txt.bodyMedium.copy(fontSize = 13.5.sp),
+                                color = colors.text,
+                            )
+                            Text(
+                                "pengguna@taskku",
+                                style = txt.small.copy(fontSize = 10.5.sp),
+                                color = colors.textMuted,
+                            )
                         }
                     }
                     Box(Modifier.fillMaxWidth().height(1.dp).background(colors.border))

@@ -33,6 +33,7 @@ import com.taskku.data.AppSettings
 import com.taskku.data.Task
 import com.taskku.data.TaskRepository
 import com.taskku.data.UserSession
+import com.taskku.data.todayLabel
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.LocalTaskKuText
 import com.taskku.theme.TaskKuTheme
@@ -246,7 +247,10 @@ private fun DesktopApp(darkOverride: Boolean?, onLogout: () -> Unit, onDarkOverr
                     "Profil" -> "Profil"
                     else -> "Hari Ini"
                 },
-                subtitle = "Jumat, 13 November 2026 — 5 tugas aktif (demo)",
+                subtitle = run {
+                    val aktif = TaskRepository.tasks.count { !it.isDone }
+                    "${todayLabel()} — $aktif tugas aktif"
+                },
                 onProfile = { tab = "Profil" },
                 onLogout = onLogout,
                 onAdd = { openSpeedDial() },

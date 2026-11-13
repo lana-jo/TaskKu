@@ -27,6 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.taskku.data.Categories
 import com.taskku.data.TaskRepository
+import com.taskku.data.startOfWeek
+import com.taskku.data.today
+import com.taskku.data.weekdayIndex
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.TaskKuShapes
 import com.taskku.theme.LocalTaskKuText
@@ -35,10 +38,15 @@ import com.taskku.ui.FabButton
 import com.taskku.ui.MicroLabel
 import com.taskku.ui.Ring
 import com.taskku.ui.TaskKuChip
+import kotlinx.datetime.DatePeriod
+import kotlinx.datetime.minus
+import kotlinx.datetime.plus
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
-private val barValues = listOf(5, 7, 4, 8, 6, 3, 7) // data demo sementara (belum ada persistensi)
+// Data dihitung live dari TaskRepository; awal list = Senin sesuai weekdayIndex().
 private val barLabels = listOf("SEN", "SEL", "RAB", "KAM", "JUM", "SAB", "MIN")
-private const val todayBarIndex = 4 // Jumat
 
 @Composable
 fun StatisticsScreen(
@@ -48,7 +56,15 @@ fun StatisticsScreen(
 ) {
     val colors = LocalTaskKuColors.current
     val txt = LocalTaskKuText.current
-    val todayTasks = TaskRepository.tasks.filter { it.section == "Hari Ini" }
+    val todayDate = remember { today() }
+    val todayBarIndex = todayDate.weekdayIndex() // SEN=0..MIN=6
+    // Aktivitas 7 hari: jumlah tugas per hari dalam minggu berjalan (Senin..Minggu).
+    val weekStart = remember(todayDate) { todayDate.startOfWeek() }
+    val barValues = remember(todayDate) {
+        (0..6).map { offset -> TaskRepository.tasks.count { it.date == weekStart.plus(DatePeriod(days = offset)) } }
+    }
+    val totalWeek = barValues.sum()
+    val todayTasks = TaskRepository.tasks.filter { it.date == todayDate }
     val doneToday = todayTasks.count { it.isDone }
     val pct = if (todayTasks.isEmpty()) 0 else (doneToday * 100 / todayTasks.size)
     val byCategory = Categories.all.map { cat -> cat to TaskRepository.tasks.count { it.category.label == cat.label } }
@@ -77,7 +93,14 @@ fun StatisticsScreen(
                         Spacer(Modifier.height(5.dp))
                         Text("$doneToday dari ${todayTasks.size} tugas", style = txt.section.copy(fontSize = 17.sp), color = colors.text)
                         Spacer(Modifier.height(3.dp))
-                        Text("+12% dari kemarin (demo)", style = txt.small.copy(fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold), color = colors.success)
+                        val prevIndex = (todayBarIndex - 1).coerceAtLeast(0)
+                        val prevDay = remember(todayDate) { weekStart.plus(DatePeriod(days = prevIndex)) }
+                        val prevDone = TaskRepository.tasks.count { it.date == prevDay && it.isDone }
+                        Text(
+                            "Kemarin: $prevDone selesai",
+                            style = txt.small.copy(fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold),
+                            color = colors.success,
+                        )
                     }
                 }
             }
@@ -91,7 +114,7 @@ fun StatisticsScreen(
                                 .background(colors.primarySoft)
                                 .padding(horizontal = 9.dp, vertical = 3.dp),
                         ) {
-                            Text("28 tugas (demo)", style = txt.small.copy(fontSize = 11.sp, fontWeight = FontWeight.SemiBold), color = colors.primary)
+                            Text("$totalWeek tugas", style = txt.small.copy(fontSize = 11.sp, fontWeight = FontWeight.SemiBold), color = colors.primary)
                         }
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth().height(118.dp), verticalAlignment = Alignment.Bottom) {
@@ -124,7 +147,7 @@ fun StatisticsScreen(
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(18.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text("Berdasarkan Kategori", style = txt.bodyMedium.copy(fontWeight = FontWeight.SemiBold), color = colors.text, modifier = Modifier.weight(1f))
-                        Text("Bulan ini (demo)", style = txt.small.copy(fontSize = 11.sp), color = colors.textMuted)
+                    Text("Bulan ini", style = txt.small.copy(fontSize = 11.sp), color = colors.textMuted)
                     }
                     byCategory.forEach { (cat, count) ->
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(9.dp), modifier = Modifier.fillMaxWidth()) {

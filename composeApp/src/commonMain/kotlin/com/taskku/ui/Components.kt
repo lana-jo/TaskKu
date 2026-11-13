@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.taskku.data.Categories
 import com.taskku.data.Task
+import com.taskku.data.TaskRepository
 import com.taskku.theme.LocalTaskKuColors
 import com.taskku.theme.TaskKuShapes
 import com.taskku.theme.LocalTaskKuText
@@ -263,7 +264,12 @@ fun HeroCard(modifier: Modifier = Modifier) {
         ) {
             Row(verticalAlignment = Alignment.Top) {
                 Column(Modifier.weight(1f)) {
-                    Text("Selamat pagi, Rian 👋", style = txt.section.copy(fontSize = 20.sp), color = white)
+                    val name = com.taskku.data.UserSession.userName
+                    Text(
+                        "Selamat pagi, ${name ?: "Pengguna"} 👋",
+                        style = txt.section.copy(fontSize = 20.sp),
+                        color = white,
+                    )
                     Spacer(Modifier.height(5.dp))
                     Text(com.taskku.data.todayLabel(), style = txt.small.copy(fontSize = 12.5.sp), color = white.copy(alpha = 0.7f))
                 }
@@ -274,7 +280,11 @@ fun HeroCard(modifier: Modifier = Modifier) {
                         .clip(CircleShape)
                         .background(Color.White.copy(alpha = 0.18f)),
                 ) {
-                    Text("R", style = txt.section, color = white)
+                    Text(
+                        (com.taskku.data.UserSession.userName ?: "?").take(1).uppercase(),
+                        style = txt.section,
+                        color = white,
+                    )
                 }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -295,7 +305,11 @@ fun HeroCard(modifier: Modifier = Modifier) {
                         .background(Color.White.copy(alpha = 0.17f))
                         .padding(horizontal = 12.dp, vertical = 7.dp),
                 ) {
-                    Text("3 tugas hari ini", style = txt.small.copy(fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold, fontSize = 11.5.sp), color = white)
+                    Text(
+                        "${TaskRepository.tasks.count { !it.isDone }} tugas aktif",
+                        style = txt.small.copy(fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold, fontSize = 11.5.sp),
+                        color = white,
+                    )
                 }
             }
         }
