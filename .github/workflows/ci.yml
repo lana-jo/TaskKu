@@ -35,6 +35,9 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          # default "packages: tools" sudah tidak ada di repo SDK; cukup platform-tools
+          packages: platform-tools
 
       - name: Install Android platform
         run: sdkmanager "platforms;android-37.0" "build-tools;37.0.0" "platform-tools"
